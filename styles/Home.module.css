@@ -1,4 +1,14 @@
-.container {
+.title {
+  background-color: #622A78;
+  color: white;
+  padding: 20px 15px 20px 20px;
+  font-size: 24px;
+}
+
+.link {
+  text-decoration: underline;
+}
+/* .container {
   padding: 0 2rem;
 }
 
@@ -126,4 +136,4 @@
   .logo img {
     filter: invert(1);
   }
-}
+} */
