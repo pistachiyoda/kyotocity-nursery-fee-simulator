@@ -3,10 +3,17 @@ import Head from 'next/head'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Link from '@mui/material/Link'
-import { SubTitle } from '../components/subtitle'
 import { Box } from '@mui/material'
+import { CalcCityTax } from '../components/CalcCityTax/CalcCityTax'
+import { SpecifyLayer } from '../components/SpecifyLayer'
+import { CalcNurseryFee } from '../components/CalcNurseryFee'
+import { useState } from 'react'
 
 const Home: NextPage = () => {
+    const [fathersIncome, setFathersIncome] = useState(0)
+    const [mothersIncome, setMothersIncome] = useState(0)
+    const [familyCityTax, setFamilyCityTax] = useState(0)
+    const [layer, setLayer] = useState(0)
     return (
         <Container>
             <Head>
@@ -44,10 +51,19 @@ const Home: NextPage = () => {
                     </Link>
                     をご覧ください。
                 </p>
-
-                <SubTitle subtitle={'Step1 市民税の算出'}></SubTitle>
-                <SubTitle subtitle={'Step2 階層の決定'}></SubTitle>
-                <SubTitle subtitle={'Step3 保育料の算出'}></SubTitle>
+                <CalcCityTax
+                    fathersIncome={fathersIncome}
+                    setFathersIncome={setFathersIncome}
+                    mothersIncome={mothersIncome}
+                    setMothersIncome={setMothersIncome}
+                    setFamilyCityTax={setFamilyCityTax}
+                />
+                <SpecifyLayer
+                    familyCityTax={familyCityTax}
+                    layer={layer}
+                    setLayer={setLayer}
+                />
+                <CalcNurseryFee layer={layer} />
             </Box>
 
             <footer></footer>
