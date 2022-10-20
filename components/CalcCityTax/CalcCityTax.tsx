@@ -1,41 +1,97 @@
 import { SubTitle } from '../Subtitle'
 import { InputIncome } from './InputIncome'
-import { Result } from './Result'
+import { SubSubTitle } from '../SubSubTiltle'
+import { InputDeduction } from './InputDeduction'
+import { useEffect, useState } from 'react'
+
+type SetState<T> = React.Dispatch<React.SetStateAction<T>>
+
+function min(a: number, b: number) {
+    if (a > b) return b
+    return a
+}
+
+function max(a: number, b: number) {
+    if (a > b) return a
+    return b
+}
 
 export const CalcCityTax: React.FC<{
-    fathersIncome: number
-    setFathersIncome: React.Dispatch<React.SetStateAction<number>>
-    mothersIncome: number
-    setMothersIncome: React.Dispatch<React.SetStateAction<number>>
-    setFamilyCityTax: React.Dispatch<React.SetStateAction<number>>
+    relationship: '父' | '母'
+    myIncome: number
+    setMyIncome: SetState<number>
+    spouseIncome: number
+    setIncomeDeduction: SetState<number>
 }> = (props) => {
     const {
-        fathersIncome,
-        setFathersIncome,
-        mothersIncome,
-        setMothersIncome,
-        setFamilyCityTax,
+        relationship,
+        myIncome,
+        setMyIncome,
+        spouseIncome,
+        setIncomeDeduction,
     } = props
+
+    const [basicDeduction, setBasicDeduction] = useState(0)
+    const [spouseDeduction, setSpouseDeduction] = useState(0)
+    const [specialSpouseDeduction, setSpecialSpouseDeduction] = useState(0)
+    const [supportDeduction, setSupportDeduction] = useState(0)
+    const [socialInsuranceDeduction, setSocialInsuranceDeduction] = useState(0)
+
+    useEffect(() => {
+        setIncomeDeduction(
+            basicDeduction +
+                spouseDeduction +
+                specialSpouseDeduction +
+                supportDeduction +
+                socialInsuranceDeduction
+        )
+    }, [
+        basicDeduction,
+        setIncomeDeduction,
+        specialSpouseDeduction,
+        spouseDeduction,
+        supportDeduction,
+        socialInsuranceDeduction,
+    ])
 
     return (
         <>
-            <SubTitle subtitle={'Step1 市民税の算出'}></SubTitle>
-            <p>父、母の年収を入力してください。</p>
+            <SubSubTitle
+                subsubtitle={`${relationship}の年収を入力してください。`}
+            ></SubSubTitle>
             <InputIncome
-                label="父の年収"
-                income={fathersIncome}
-                setIncome={setFathersIncome}
-            ></InputIncome>
-            <InputIncome
-                label="母の年収"
-                income={mothersIncome}
-                setIncome={setMothersIncome}
-            ></InputIncome>
-            <Result
-                fathersIncome={fathersIncome}
-                mothersIncome={mothersIncome}
-                setFamilyCityTax={setFamilyCityTax}
-            ></Result>
+                label={`${relationship}の年収`}
+                income={myIncome}
+                setIncome={setMyIncome}
+            />
+            <SubSubTitle subsubtitle="所得控除を入力してください。"></SubSubTitle>
+            <InputDeduction label="基礎控除" setDeduction={setBasicDeduction} />
+            <InputDeduction
+                label="配偶者控除"
+                disabled={
+                    min(myIncome, spouseIncome) > 1030000 ||
+                    max(myIncome, spouseIncome) > 10000000
+                }
+                setDeduction={setSpouseDeduction}
+            />
+            <InputDeduction
+                label="配偶者特別控除"
+                disabled={
+                    min(myIncome, spouseIncome) <= 480000 ||
+                    min(myIncome, spouseIncome) > 1330000 ||
+                    max(myIncome, spouseIncome) > 10000000
+                }
+                setDeduction={setSpecialSpouseDeduction}
+            />
+            <InputDeduction
+                label="扶養控除"
+                setDeduction={setSupportDeduction}
+            />
+
+            <InputDeduction
+                label="社会保険料控除"
+                setDeduction={setSocialInsuranceDeduction}
+            />
         </>
     )
 }

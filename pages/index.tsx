@@ -5,15 +5,23 @@ import Container from '@mui/material/Container'
 import Link from '@mui/material/Link'
 import { Box } from '@mui/material'
 import { CalcCityTax } from '../components/CalcCityTax/CalcCityTax'
-import { SpecifyLayer } from '../components/SpecifyLayer'
 import { CalcNurseryFee } from '../components/CalcNurseryFee'
 import { useState } from 'react'
+import { SubTitle } from '../components/Subtitle'
+import { specifyLayer } from '../lib/specifyLayer'
+import { calcCityTax } from '../lib/calcCityTax'
 
 const Home: NextPage = () => {
     const [fathersIncome, setFathersIncome] = useState(0)
     const [mothersIncome, setMothersIncome] = useState(0)
-    const [familyCityTax, setFamilyCityTax] = useState(0)
+    const [fathersIncomeDeduction, setFathersIncomeDeduction] = useState(0)
+    const [mothersIncomeDeduction, setMothersIncomeDeduction] = useState(0)
     const [layer, setLayer] = useState(0)
+
+    const familyCityTax =
+        calcCityTax(fathersIncome, fathersIncomeDeduction, 0) +
+        calcCityTax(mothersIncome, mothersIncomeDeduction, 0)
+
     return (
         <Container>
             <Head>
@@ -38,6 +46,7 @@ const Home: NextPage = () => {
                 </Typography>
                 <p>
                     京都市認可保育施設の保育料を簡易シミュレーションできます。
+                    計算するのは幼保無償化対象外の0~2歳の保育料です。
                     <br />
                     <br />
                     この計算結果はあくまで参考情報です。
@@ -51,19 +60,24 @@ const Home: NextPage = () => {
                     </Link>
                     をご覧ください。
                 </p>
+                <SubTitle>Step1 父の情報の入力</SubTitle>
                 <CalcCityTax
-                    fathersIncome={fathersIncome}
-                    setFathersIncome={setFathersIncome}
-                    mothersIncome={mothersIncome}
-                    setMothersIncome={setMothersIncome}
-                    setFamilyCityTax={setFamilyCityTax}
+                    relationship="父"
+                    myIncome={fathersIncome}
+                    setMyIncome={setFathersIncome}
+                    spouseIncome={mothersIncome}
+                    setIncomeDeduction={setFathersIncomeDeduction}
                 />
-                <SpecifyLayer
-                    familyCityTax={familyCityTax}
-                    layer={layer}
-                    setLayer={setLayer}
+                <SubTitle>Step2 母の情報の入力</SubTitle>
+                <CalcCityTax
+                    relationship="母"
+                    myIncome={mothersIncome}
+                    setMyIncome={setMothersIncome}
+                    spouseIncome={fathersIncome}
+                    setIncomeDeduction={setMothersIncomeDeduction}
                 />
-                <CalcNurseryFee layer={layer} />
+                <SubTitle>Step3 保育料シミュレーション結果</SubTitle>
+                <CalcNurseryFee familyCityTax={familyCityTax} />
             </Box>
 
             <footer></footer>

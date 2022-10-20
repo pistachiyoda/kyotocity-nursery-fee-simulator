@@ -1,20 +1,20 @@
 import Typography from '@mui/material/Typography'
 
-export const SubTitle: React.FC<{
-    children: React.ReactNode
+export const SubSubTitle: React.FC<{
+    subsubtitle: string
 }> = (props) => {
-    const { children } = props
+    const { subsubtitle } = props
     return (
         <Typography
-            variant="h2"
+            variant="h3"
             sx={{
-                backgroundColor: '#ddc5e7',
                 padding: '10px 10px 10px 20px',
                 margin: '15px 0px',
-                fontSize: '18px',
+                fontSize: '16px',
+                borderLeft: 'solid thick #ebbd66',
             }}
         >
-            {children}
+            {subsubtitle}
         </Typography>
     )
 }
