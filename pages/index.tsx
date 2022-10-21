@@ -3,24 +3,22 @@ import Head from 'next/head'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Link from '@mui/material/Link'
-import { AppBar, Box, Button, Card, Toolbar } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { CalcCityTax } from '../components/CalcCityTax/CalcCityTax'
 import { CalcNurseryFee } from '../components/CalcNurseryFee'
 import { useState } from 'react'
 import { SubTitle } from '../components/SubTitle'
-import { specifyLayer } from '../lib/specifyLayer'
 import { calcCityTax } from '../lib/calcCityTax'
-import Image from 'next/image'
 import SearchIcon from '@mui/icons-material/Search'
 import { NurserySchoolCard } from '../components/NurserySchoolCard'
 import { Stack } from '@mui/system'
+import Script from 'next/script'
 
 const Home: NextPage = () => {
     const [fathersIncome, setFathersIncome] = useState(0)
     const [mothersIncome, setMothersIncome] = useState(0)
     const [fathersIncomeDeduction, setFathersIncomeDeduction] = useState(0)
     const [mothersIncomeDeduction, setMothersIncomeDeduction] = useState(0)
-    const [layer, setLayer] = useState(0)
 
     const familyCityTax =
         calcCityTax(fathersIncome, fathersIncomeDeduction, 0) +
@@ -28,6 +26,22 @@ const Home: NextPage = () => {
 
     return (
         <Container>
+            <Script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-TW6JSZD2M0"
+            />
+            <Script
+                id="gtag"
+                dangerouslySetInnerHTML={{
+                    __html: `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TW6JSZD2M0');
+`,
+                }}
+            />
             <Head>
                 <title>京都市保育料シミュレーター</title>
                 <meta name="description" content="京都市保育料シミュレーター" />
