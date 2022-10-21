@@ -12,7 +12,7 @@ import { specifyLayer } from '../lib/specifyLayer'
 import { calcCityTax } from '../lib/calcCityTax'
 import Image from 'next/image'
 import SearchIcon from '@mui/icons-material/Search'
-import ActionAreaCard from '../components/Card'
+import { NurserySchoolCard } from '../components/NurserySchoolCard'
 import { Stack } from '@mui/system'
 
 const Home: NextPage = () => {
@@ -95,9 +95,29 @@ const Home: NextPage = () => {
                 とは内閣府により認定されている保育事業です。
                 認可保育所と枠組みは異なりますが認可保育所並みの厳しい設置・運営基準が課せられているため、一定の保育の質が確保されています。
             </p>
-            <ActionAreaCard></ActionAreaCard>
-            <ActionAreaCard></ActionAreaCard>
-            <ActionAreaCard></ActionAreaCard>
+            <Stack spacing={2}>
+                <NurserySchoolCard
+                    url="https://www.instagram.com/izuru_hoikuen.kyoto/?hl=ja"
+                    image="/static/images/cards/izuru.png"
+                    schoolName="いづる保育園"
+                    introduction="日本初の和風保育園。保育士の先生方の工夫を凝らした保育が魅力の園です。"
+                    price="35,000円"
+                />
+                <NurserySchoolCard
+                    url="https://www.instagram.com/growth.hoiku/?hl=ja"
+                    image="/static/images/cards/growthkids.png"
+                    schoolName="ぐろうすきっず保育園"
+                    introduction="「リトミック」「幼児体操」など、多彩な幼児教育プログラムを導入しています。"
+                    price="20,000円"
+                />
+                <NurserySchoolCard
+                    url="https://www.instagram.com/land_en103/"
+                    image="/static/images/cards/nijoland.png"
+                    schoolName="二条ランド園"
+                    introduction="先生や職員も含め関わる方々が一緒に、元気・明るくのみでなく、人として豊かに育っていくことを目的としています。"
+                    price="35,000円"
+                />
+            </Stack>
             <Button
                 variant="contained"
                 endIcon={<SearchIcon />}
