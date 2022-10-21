@@ -31,6 +31,10 @@ const Home: NextPage = () => {
             <Head>
                 <title>京都市保育料シミュレーター</title>
                 <meta name="description" content="京都市保育料シミュレーター" />
+                <meta
+                    name="google-site-verification"
+                    content="QSSagDQxJDpzwkQ5v43H57EuZc9RwvzqQ9LEqZ99s4I"
+                />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Box sx={{ fontSize: '25px' }}>京都市企業主導型保育園.com</Box>
