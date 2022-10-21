@@ -69,6 +69,7 @@ export const CalcCityTax: React.FC<{
                 <InputDeduction
                     label="基礎控除"
                     setDeduction={setBasicDeduction}
+                    disabled={myIncome > 25000000}
                 />
                 <InputDeduction
                     label="配偶者控除"
