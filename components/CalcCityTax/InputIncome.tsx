@@ -31,6 +31,7 @@ export const InputIncome: React.FC<{
                     <InputAdornment position="end">円</InputAdornment>
                 ),
             }}
+            type="number"
         />
     )
 }
