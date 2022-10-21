@@ -1,5 +1,4 @@
-import { TextField } from '@mui/material'
-import { Box } from '@mui/system'
+import { InputAdornment, TextField } from '@mui/material'
 
 export const InputIncome: React.FC<{
     label: string
@@ -20,33 +19,18 @@ export const InputIncome: React.FC<{
     }
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
+        <TextField
+            label={label}
+            variant="outlined"
+            fullWidth
+            onChange={handleChange}
+            onKeyDown={onChangeFathersIncome}
+            onBlur={handleBlur}
+            InputProps={{
+                endAdornment: (
+                    <InputAdornment position="end">円</InputAdornment>
+                ),
             }}
-        >
-            <TextField
-                id="outlined-basic"
-                label={label}
-                variant="outlined"
-                fullWidth
-                onChange={handleChange}
-                onKeyDown={onChangeFathersIncome}
-                onBlur={handleBlur}
-                sx={{ mb: 1 }}
-            />
-            <Box
-                sx={{
-                    ml: 1,
-                    width: '70px',
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    mb: 1,
-                }}
-            >
-                円
-            </Box>
-        </Box>
+        />
     )
 }

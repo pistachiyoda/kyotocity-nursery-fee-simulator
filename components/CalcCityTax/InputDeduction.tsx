@@ -1,5 +1,4 @@
-import { TextField, TextFieldProps } from '@mui/material'
-import { Box } from '@mui/system'
+import { InputAdornment, TextField, TextFieldProps } from '@mui/material'
 import React from 'react'
 
 export const InputDeduction: React.FC<
@@ -8,34 +7,19 @@ export const InputDeduction: React.FC<
     }
 > = ({ setDeduction, ...textFieldProps }) => {
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
+        <TextField
+            variant="outlined"
+            fullWidth
+            type="number"
+            onChange={(e) =>
+                e.target.value && setDeduction(Number(e.target.value))
+            }
+            {...textFieldProps}
+            InputProps={{
+                endAdornment: (
+                    <InputAdornment position="end">円</InputAdornment>
+                ),
             }}
-        >
-            <TextField
-                id="outlined-basic"
-                variant="outlined"
-                fullWidth
-                type="number"
-                sx={{ mb: 1 }}
-                onChange={(e) =>
-                    e.target.value && setDeduction(Number(e.target.value))
-                }
-                {...textFieldProps}
-            />
-            <Box
-                sx={{
-                    ml: 1,
-                    width: '70px',
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    mb: 1,
-                }}
-            >
-                円
-            </Box>
-        </Box>
+        />
     )
 }

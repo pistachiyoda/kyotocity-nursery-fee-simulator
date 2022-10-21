@@ -1,8 +1,8 @@
-import { SubTitle } from '../Subtitle'
 import { InputIncome } from './InputIncome'
 import { SubSubTitle } from '../SubSubTiltle'
 import { InputDeduction } from './InputDeduction'
 import { useEffect, useState } from 'react'
+import { Stack } from '@mui/system'
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>
 
@@ -65,33 +65,38 @@ export const CalcCityTax: React.FC<{
                 setIncome={setMyIncome}
             />
             <SubSubTitle subsubtitle="所得控除を入力してください。"></SubSubTitle>
-            <InputDeduction label="基礎控除" setDeduction={setBasicDeduction} />
-            <InputDeduction
-                label="配偶者控除"
-                disabled={
-                    min(myIncome, spouseIncome) > 1030000 ||
-                    max(myIncome, spouseIncome) > 10000000
-                }
-                setDeduction={setSpouseDeduction}
-            />
-            <InputDeduction
-                label="配偶者特別控除"
-                disabled={
-                    min(myIncome, spouseIncome) <= 480000 ||
-                    min(myIncome, spouseIncome) > 1330000 ||
-                    max(myIncome, spouseIncome) > 10000000
-                }
-                setDeduction={setSpecialSpouseDeduction}
-            />
-            <InputDeduction
-                label="扶養控除"
-                setDeduction={setSupportDeduction}
-            />
+            <Stack spacing={2}>
+                <InputDeduction
+                    label="基礎控除"
+                    setDeduction={setBasicDeduction}
+                />
+                <InputDeduction
+                    label="配偶者控除"
+                    disabled={
+                        min(myIncome, spouseIncome) > 1030000 ||
+                        max(myIncome, spouseIncome) > 10000000
+                    }
+                    setDeduction={setSpouseDeduction}
+                />
+                <InputDeduction
+                    label="配偶者特別控除"
+                    disabled={
+                        min(myIncome, spouseIncome) <= 480000 ||
+                        min(myIncome, spouseIncome) > 1330000 ||
+                        max(myIncome, spouseIncome) > 10000000
+                    }
+                    setDeduction={setSpecialSpouseDeduction}
+                />
+                <InputDeduction
+                    label="扶養控除"
+                    setDeduction={setSupportDeduction}
+                />
 
-            <InputDeduction
-                label="社会保険料控除"
-                setDeduction={setSocialInsuranceDeduction}
-            />
+                <InputDeduction
+                    label="社会保険料控除"
+                    setDeduction={setSocialInsuranceDeduction}
+                />
+            </Stack>
         </>
     )
 }
