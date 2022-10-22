@@ -2,8 +2,16 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import InfoIcon from '@mui/icons-material/Info'
 import Link from '@mui/material/Link'
-import { Box, Button, List, ListItem, ListItemText } from '@mui/material'
+import {
+    Box,
+    Button,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+} from '@mui/material'
 import { CalcCityTax } from '../components/CalcCityTax/CalcCityTax'
 import { CalcNurseryFee } from '../components/CalcNurseryFee'
 import { useState } from 'react'
@@ -118,21 +126,35 @@ const Home: NextPage = () => {
                     認可保育所と枠組みは異なりますが認可保育所並みの厳しい設置・運営基準が課せられているため、一定の保育の質が確保されています。
                     <br />
                 </p>
-
-                <Typography variant="h1">
+                <Typography
+                    variant="h1"
+                    sx={{
+                        backgroundColor: '#622A78',
+                        color: 'white',
+                        padding: '20px 15px 20px 20px',
+                        fontSize: '24px',
+                    }}
+                >
                     メリット色々！企業主導型保育園！
                 </Typography>
                 <List>
                     <ListItem>
-                        <ListItemText>入園結果がすぐわかる！</ListItemText>
+                        <ListItemIcon>
+                            <InfoIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="入園結果がすぐわかる！" />
                     </ListItem>
                     <ListItem>
-                        <ListItemText>
-                            施設に空きがあればすぐ入れる！
-                        </ListItemText>
+                        <ListItemIcon>
+                            <InfoIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="施設に空きがあればすぐ入れる！" />
                     </ListItem>
                     <ListItem>
-                        <ListItemText>保育料もお手頃！</ListItemText>
+                        <ListItemIcon>
+                            <InfoIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="保育料もお手頃！" />
                     </ListItem>
                 </List>
 
@@ -161,6 +183,9 @@ const Home: NextPage = () => {
                 </Stack>
                 <Button
                     variant="contained"
+                    fullWidth
+                    component="a"
+                    href="https://www.kigyounaihoiku.jp/report/nursery?page_no=1&prefecture=26&address_1=%E4%BA%AC%E9%83%BD%E5%B8%82&facility_name=&tel=&open_time_h=&open_time_m=&open_time=&close_time_h=&close_time_m=&close_time=&ex_open_time_h=&ex_open_time_m=&ex_open_time=&ex_close_time_h=&ex_close_time_m=&ex_close_time="
                     endIcon={<SearchIcon />}
                     sx={{
                         backgroundColor: '#622A78',
@@ -169,9 +194,7 @@ const Home: NextPage = () => {
                         mb: 2,
                     }}
                 >
-                    <a href="https://www.kigyounaihoiku.jp/report/nursery?page_no=1&prefecture=26&address_1=%E4%BA%AC%E9%83%BD%E5%B8%82&facility_name=&tel=&open_time_h=&open_time_m=&open_time=&close_time_h=&close_time_m=&close_time=&ex_open_time_h=&ex_open_time_m=&ex_open_time=&ex_close_time_h=&ex_close_time_m=&ex_close_time=">
-                        京都市の企業主導型保育施設をもっと調べる
-                    </a>
+                    京都市の企業主導型保育施設をもっと調べる
                 </Button>
             </Container>
             <Box sx={{ backgroundColor: '#ede1f2', p: 3, textAlign: 'center' }}>
