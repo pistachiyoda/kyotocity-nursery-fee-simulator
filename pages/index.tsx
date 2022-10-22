@@ -135,7 +135,9 @@ const Home: NextPage = () => {
                         fontSize: '24px',
                     }}
                 >
-                    メリット色々！企業主導型保育園！
+                    メリット色々！
+                    <br />
+                    企業主導型保育園！
                 </Typography>
                 <List>
                     <ListItem>
