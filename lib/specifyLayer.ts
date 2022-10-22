@@ -1,5 +1,5 @@
 export const specifyLayer = (familyCityTax: number) => {
-    if (familyCityTax <= 34999) return 4
+    if (familyCityTax >= 1 && familyCityTax <= 34999) return 4
     if (familyCityTax >= 35000 && familyCityTax <= 41999) return 5
     if (familyCityTax >= 42000 && familyCityTax <= 48599) return 6
     if (familyCityTax >= 48600 && familyCityTax <= 58099) return 7
