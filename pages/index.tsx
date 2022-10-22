@@ -3,13 +3,7 @@ import Head from 'next/head'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Link from '@mui/material/Link'
-import {
-    Box,
-    Button,
-    List,
-    ListItem,
-    ListItemText,
-} from '@mui/material'
+import { Box, Button, List, ListItem, ListItemText } from '@mui/material'
 import { CalcCityTax } from '../components/CalcCityTax/CalcCityTax'
 import { CalcNurseryFee } from '../components/CalcNurseryFee'
 import { useState } from 'react'
@@ -19,6 +13,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import { NurserySchoolCard } from '../components/NurserySchoolCard'
 import { Stack } from '@mui/system'
 import Script from 'next/script'
+import Image from 'next/image'
 
 const Home: NextPage = () => {
     const [fathersIncome, setFathersIncome] = useState(0)
@@ -116,14 +111,33 @@ const Home: NextPage = () => {
                     <strong>企業主導型保育園</strong>
                     を検討してみてはいかがでしょうか？
                 </p>
+                <Stack spacing={2}>
+                    <NurserySchoolCard
+                        url="https://www.instagram.com/izuru_hoikuen.kyoto/?hl=ja"
+                        image="/static/images/cards/izuru.png"
+                        schoolName="いづる保育園"
+                        introduction="日本初の和風保育園。保育士の先生方の工夫を凝らした保育が魅力の園です。"
+                        price="35,000円"
+                    />
+                    <NurserySchoolCard
+                        url="https://www.instagram.com/growth.hoiku/?hl=ja"
+                        image="/static/images/cards/growthkids.png"
+                        schoolName="ぐろうすきっず保育園"
+                        introduction="「リトミック」「幼児体操」など、多彩な幼児教育プログラムを導入しています。"
+                        price="20,000円"
+                    />
+                    <NurserySchoolCard
+                        url="https://www.instagram.com/land_en103/"
+                        image="/static/images/cards/nijoland.png"
+                        schoolName="二条ランド園"
+                        introduction="先生や職員も含め関わる方々が一緒に、元気・明るくのみでなく、人として豊かに育っていくことを目的としています。"
+                        price="35,000円"
+                    />
+                </Stack>
                 <p>
-                    <Link href="https://www.kigyounaihoiku.jp/users">
-                        企業主導型保育園
-                    </Link>
-                    とは内閣府により認定されている保育事業です。
+                    企業主導型保育園とは内閣府により認定されている保育事業です。
                     認可保育所と枠組みは異なりますが認可保育所並みの厳しい設置・運営基準が課せられているため、一定の保育の質が確保されています。
                 </p>
-                <p>TBD: 簡単な契約で提携できることについての補足</p>
                 <Typography
                     variant="h1"
                     sx={{
@@ -163,29 +177,14 @@ const Home: NextPage = () => {
                     </ListItem>
                 </List>
 
-                <Stack spacing={2}>
-                    <NurserySchoolCard
-                        url="https://www.instagram.com/izuru_hoikuen.kyoto/?hl=ja"
-                        image="/static/images/cards/izuru.png"
-                        schoolName="いづる保育園"
-                        introduction="日本初の和風保育園。保育士の先生方の工夫を凝らした保育が魅力の園です。"
-                        price="35,000円"
-                    />
-                    <NurserySchoolCard
-                        url="https://www.instagram.com/growth.hoiku/?hl=ja"
-                        image="/static/images/cards/growthkids.png"
-                        schoolName="ぐろうすきっず保育園"
-                        introduction="「リトミック」「幼児体操」など、多彩な幼児教育プログラムを導入しています。"
-                        price="20,000円"
-                    />
-                    <NurserySchoolCard
-                        url="https://www.instagram.com/land_en103/"
-                        image="/static/images/cards/nijoland.png"
-                        schoolName="二条ランド園"
-                        introduction="先生や職員も含め関わる方々が一緒に、元気・明るくのみでなく、人として豊かに育っていくことを目的としています。"
-                        price="35,000円"
-                    />
-                </Stack>
+                <p>
+                    企業主導型保育園に関する最新の情報は
+                    <Link href="https://www.kigyounaihoiku.jp/users">
+                        こちら
+                    </Link>
+                    をご確認ください。
+                </p>
+
                 <Button
                     variant="contained"
                     fullWidth
@@ -201,11 +200,20 @@ const Home: NextPage = () => {
                 >
                     京都市の企業主導型保育施設をもっと調べる
                 </Button>
+                <Box maxWidth={200} margin="auto">
+                    <Image
+                        src="/mother_and_child.png"
+                        width={536}
+                        height={653}
+                        alt="mother_and_child"
+                        layout="responsive"
+                    ></Image>
+                </Box>
             </Container>
             <Box sx={{ backgroundColor: '#ede1f2', p: 3, textAlign: 'center' }}>
                 このサイトはこどもを実際に企業主導型保育園に通わせている有志の保護者によって運営されています。
                 <br />
-                お気づきの点、ご要望等ありましたら、
+                お気づきの点、ご要望、質問等ありましたら、
                 <a href="https://twitter.com/pistachiyoda">こちら</a>
                 よりDMにてご連絡ください <br />
                 <br />

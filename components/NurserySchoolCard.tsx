@@ -26,11 +26,14 @@ export const NurserySchoolCard: React.FC<{
                     <Typography gutterBottom variant="h5" component="div">
                         {schoolName}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                    <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{ mb: 2 }}
+                    >
                         {introduction}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        月額保育料: {price}（1歳児の場合）</Typography>
+                    <Typography>月額保育料: {price}（1歳児の場合）</Typography>
                 </CardContent>
             </CardActionArea>
         </Card>
