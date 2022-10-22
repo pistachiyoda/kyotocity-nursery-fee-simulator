@@ -2,14 +2,12 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import InfoIcon from '@mui/icons-material/Info'
 import Link from '@mui/material/Link'
 import {
     Box,
     Button,
     List,
     ListItem,
-    ListItemIcon,
     ListItemText,
 } from '@mui/material'
 import { CalcCityTax } from '../components/CalcCityTax/CalcCityTax'
@@ -124,8 +122,8 @@ const Home: NextPage = () => {
                     </Link>
                     とは内閣府により認定されている保育事業です。
                     認可保育所と枠組みは異なりますが認可保育所並みの厳しい設置・運営基準が課せられているため、一定の保育の質が確保されています。
-                    <br />
                 </p>
+                <p>TBD: 簡単な契約で提携できることについての補足</p>
                 <Typography
                     variant="h1"
                     sx={{
@@ -135,28 +133,33 @@ const Home: NextPage = () => {
                         fontSize: '24px',
                     }}
                 >
-                    メリット色々！
-                    <br />
-                    企業主導型保育園！
+                    企業主導型保育園の利点
                 </Typography>
                 <List>
                     <ListItem>
-                        <ListItemIcon>
-                            <InfoIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="入園結果がすぐわかる！" />
+                        <ListItemText
+                            primary="入園結果がすぐわかる！"
+                            secondary="企業主導型保育施設への入園手続きは、多くの場合、その施設に直接申し込むことになり、入園の条件さえ満たせば、すぐに入園することも可能です。"
+                        />
                     </ListItem>
                     <ListItem>
-                        <ListItemIcon>
-                            <InfoIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="施設に空きがあればすぐ入れる！" />
+                        <ListItemText
+                            primary="入園のハードルが低い！"
+                            secondary={`企業主導型保育施設の場合は、施設定員に空きがあれば、保育の支給認定（地域枠の場合）を受けるか園ごとの要件を満たせば（従業員枠の場合）入園が可能です。
+                                        そのため、認可保育園だと点数不足で入園が難しいパートタイマーや求職活動中の方であっても入園可能な場合があります。`}
+                        />
                     </ListItem>
                     <ListItem>
-                        <ListItemIcon>
-                            <InfoIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="保育料もお手頃！" />
+                        <ListItemText
+                            primary="保育料もお手頃！"
+                            secondary="企業主導型保育施設は国からの助成を受けているため、保護者から徴収する「保育料」は、基準によって上限が定められています。そのため、認可外保育施設と比較して、保育料が安くなっています。"
+                        />
+                    </ListItem>
+                    <ListItem>
+                        <ListItemText
+                            primary="一時預かりを行っている施設も！"
+                            secondary="普段は保育園に通わせていないけどちょっと子どもを預けたいという時に一時預かりの利用が可能な場合があります。"
+                        />
                     </ListItem>
                 </List>
 
