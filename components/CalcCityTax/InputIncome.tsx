@@ -8,7 +8,7 @@ export const InputIncome: React.FC<{
 }> = (props) => {
     const { label, income, setIncome } = props
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setIncome(calcIncomeBase(Number(event.target.value)))
+        setIncome(calcIncomeBase(Number(event.target.value) * 10000))
     }
 
     const onChangeFathersIncome = () => {
@@ -29,7 +29,7 @@ export const InputIncome: React.FC<{
             onBlur={handleBlur}
             InputProps={{
                 endAdornment: (
-                    <InputAdornment position="end">円</InputAdornment>
+                    <InputAdornment position="end">万円</InputAdornment>
                 ),
             }}
             type="number"

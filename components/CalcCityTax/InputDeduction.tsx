@@ -15,7 +15,7 @@ export const InputDeduction: React.FC<
             fullWidth
             type="number"
             onChange={(e) =>
-                e.target.value && setDeduction(Number(e.target.value))
+                e.target.value && setDeduction(Number(e.target.value) * 10000)
             }
             {...textFieldProps}
             InputProps={{
@@ -25,7 +25,7 @@ export const InputDeduction: React.FC<
                     </InputAdornment>
                 ),
                 endAdornment: (
-                    <InputAdornment position="end">円</InputAdornment>
+                    <InputAdornment position="end">万円</InputAdornment>
                 ),
             }}
         />
