@@ -1,4 +1,5 @@
 import { InputAdornment, TextField } from '@mui/material'
+import { calcIncomeBase } from '../../lib/calcIncomebase'
 
 export const InputIncome: React.FC<{
     label: string
@@ -7,7 +8,7 @@ export const InputIncome: React.FC<{
 }> = (props) => {
     const { label, income, setIncome } = props
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setIncome(Number(event.target.value))
+        setIncome(calcIncomeBase(Number(event.target.value)))
     }
 
     const onChangeFathersIncome = () => {
