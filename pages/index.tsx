@@ -10,20 +10,34 @@ import { useState } from 'react'
 import { SubTitle } from '../components/SubTitle'
 import { calcCityTax } from '../lib/calcCityTax'
 import SearchIcon from '@mui/icons-material/Search'
+import CalculateIcon from '@mui/icons-material/Calculate'
 import { NurserySchoolCard } from '../components/NurserySchoolCard'
 import { Stack } from '@mui/system'
 import Script from 'next/script'
 import Image from 'next/image'
+import { specifyLayer } from '../lib/specifyLayer'
+import { specifyNurseryFee } from '../lib/specifyNurseryFee'
 
 const Home: NextPage = () => {
     const [fathersIncome, setFathersIncome] = useState(0)
     const [mothersIncome, setMothersIncome] = useState(0)
     const [fathersIncomeDeduction, setFathersIncomeDeduction] = useState(0)
     const [mothersIncomeDeduction, setMothersIncomeDeduction] = useState(0)
+    const [nurseryFee_a, setNurseryFee_a] = useState(0)
+    const [nurseryFee_b, setNurseryFee_b] = useState(0)
+    const [nurseryFee_c, setNurseryFee_c] = useState(0)
 
     const familyCityTax =
         calcCityTax(fathersIncome, fathersIncomeDeduction, 0) +
         calcCityTax(mothersIncome, mothersIncomeDeduction, 0)
+
+    const setNurseryFees = () => {
+        const layer = specifyLayer(familyCityTax)
+        const [a, b, c] = specifyNurseryFee(layer)
+        setNurseryFee_a(a)
+        setNurseryFee_b(b)
+        setNurseryFee_c(c)
+    }
 
     return (
         <>
@@ -102,7 +116,20 @@ const Home: NextPage = () => {
                         setIncomeDeduction={setMothersIncomeDeduction}
                     />
                     <SubTitle>Step3 保育料シミュレーション結果</SubTitle>
-                    <CalcNurseryFee familyCityTax={familyCityTax} />
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        size="large"
+                        endIcon={<CalculateIcon />}
+                        onClick={() => setNurseryFees()}
+                    >
+                        概算額を計算する
+                    </Button>
+                    <CalcNurseryFee
+                        a={nurseryFee_a}
+                        b={nurseryFee_b}
+                        c={nurseryFee_c}
+                    />
                 </Box>
                 <p>
                     シュミレーション結果を見て意外と高いと思われた方、認可保育園に確実に入れるか不安な方、
