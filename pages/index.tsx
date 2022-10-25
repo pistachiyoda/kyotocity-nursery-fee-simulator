@@ -121,7 +121,14 @@ const Home: NextPage = () => {
                         color="secondary"
                         size="large"
                         endIcon={<CalculateIcon />}
-                        onClick={() => setNurseryFees()}
+                        onClick={() => {
+                            setNurseryFees()
+                            gtag('event', 'click_calc_button', {
+                                event_category: 'click_button',
+                                event_label: 'click_calc_button',
+                                value: 1,
+                            })
+                        }}
                     >
                         概算額を計算する
                     </Button>
