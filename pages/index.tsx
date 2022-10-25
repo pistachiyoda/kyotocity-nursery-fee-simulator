@@ -48,7 +48,7 @@ const Home: NextPage = () => {
                     <title>京都市保育料シミュレーター</title>
                     <meta
                         name="description"
-                        content="京都市保育料シミュレーター"
+                        content="京都市保育料を計算するツールです。年収を入力することで京都市の認可保育園の保育料を簡易的に計算できます。 京都市にて保活中の皆様、ぜひご活用ください！"
                     />
                     <meta
                         name="google-site-verification"
