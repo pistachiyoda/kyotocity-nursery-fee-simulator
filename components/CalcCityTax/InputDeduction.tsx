@@ -1,5 +1,4 @@
 import { InputAdornment, TextField, TextFieldProps } from '@mui/material'
-import { Box } from '@mui/system'
 import React from 'react'
 import { InfoPopOver } from './InfoPopOver'
 
@@ -14,9 +13,7 @@ export const InputDeduction: React.FC<
             variant="outlined"
             fullWidth
             type="number"
-            onChange={(e) =>
-                e.target.value && setDeduction(Number(e.target.value) * 10000)
-            }
+            onChange={(e) => setDeduction(Number(e.target.value) * 10000)}
             {...textFieldProps}
             InputProps={{
                 startAdornment: (

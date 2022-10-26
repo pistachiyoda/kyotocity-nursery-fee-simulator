@@ -3,6 +3,7 @@ import { SubSubTitle } from '../SubSubTiltle'
 import { InputDeduction } from './InputDeduction'
 import { useEffect, useState } from 'react'
 import { Stack } from '@mui/system'
+import { calcBasicDeduction } from '../../lib/calcDeduction'
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>
 
@@ -38,6 +39,12 @@ export const CalcCityTax: React.FC<{
     const [socialInsuranceDeduction, setSocialInsuranceDeduction] = useState(0)
 
     useEffect(() => {
+        console.log(myIncome)
+        console.log(calcBasicDeduction(myIncome))
+        setBasicDeduction(calcBasicDeduction(myIncome))
+    }, [myIncome])
+
+    useEffect(() => {
         setIncomeDeduction(
             basicDeduction +
                 spouseDeduction +
@@ -70,6 +77,8 @@ export const CalcCityTax: React.FC<{
                     label="基礎控除"
                     setDeduction={setBasicDeduction}
                     disabled={myIncome > 25000000}
+                    value={basicDeduction / 10000 || ''}
+                    placeholder="0"
                     description={`【合計所得金額が2,500万円以下の納税義務者が対象】
                     2,400万円以下：43万円
                     2,400万円超2,450万円以下：29万円
