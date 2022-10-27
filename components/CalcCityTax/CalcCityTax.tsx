@@ -3,7 +3,10 @@ import { SubSubTitle } from '../SubSubTiltle'
 import { InputDeduction } from './InputDeduction'
 import { useEffect, useState } from 'react'
 import { Stack } from '@mui/system'
-import { calcBasicDeduction } from '../../lib/calcDeduction'
+import {
+    calcBasicDeduction,
+    calcSpouseDeduction,
+} from '../../lib/calcDeduction'
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>
 
@@ -42,7 +45,8 @@ export const CalcCityTax: React.FC<{
         console.log(myIncome)
         console.log(calcBasicDeduction(myIncome))
         setBasicDeduction(calcBasicDeduction(myIncome))
-    }, [myIncome])
+        setSpouseDeduction(calcSpouseDeduction(myIncome, spouseIncome))
+    }, [myIncome, spouseIncome])
 
     useEffect(() => {
         setIncomeDeduction(
@@ -90,7 +94,9 @@ export const CalcCityTax: React.FC<{
                         min(myIncome, spouseIncome) > 1030000 ||
                         max(myIncome, spouseIncome) > 10000000
                     }
+                    value={spouseDeduction / 10000 || ''}
                     setDeduction={setSpouseDeduction}
+                    placeholder="0"
                     description={`【本人の前年の合計所得金額が1,000万円以下、かつ生計を一にする配偶者の前年の年間の合計所得金額が48万円以下（令和元年分以前は38万円以下）であること。（給与のみの場合は給与収入が103万円以下）】
                     本人の合計所得金額900万円以下の場合：33万円
                     本人の合計所得金額900万円超950万円以下の場合：22万円
