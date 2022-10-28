@@ -125,6 +125,7 @@ const Home: NextPage = () => {
                         variant="contained"
                         color="secondary"
                         size="large"
+                        fullWidth
                         endIcon={<CalculateIcon />}
                         onClick={() => {
                             setNurseryFees()
@@ -150,7 +151,7 @@ const Home: NextPage = () => {
                     <strong>企業主導型保育園</strong>
                     を検討してみてはいかがでしょうか？
                 </p>
-                <Stack spacing={2}>
+                {/* <Stack spacing={2}>
                     <NurserySchoolCard
                         url="https://www.instagram.com/izuru_hoikuen.kyoto/?hl=ja"
                         image="/static/images/cards/izuru.png"
@@ -172,10 +173,14 @@ const Home: NextPage = () => {
                         introduction="先生や職員も含め関わる方々が一緒に、元気・明るくのみでなく、人として豊かに育っていくことを目的としています。"
                         price="35,000円"
                     />
-                </Stack>
+                </Stack> */}
                 <p>
                     企業主導型保育園とは内閣府により認定されている保育事業です。
-                    認可保育所と枠組みは異なりますが認可保育所並みの厳しい設置・運営基準が課せられているため、一定の保育の質が確保されています。
+                    認可保育所と枠組みは異なりますが
+                    <strong>
+                        認可保育所並みの厳しい設置・運営基準が課せられている
+                    </strong>
+                    ため、一定の保育の質が確保されています。
                 </p>
                 <Typography
                     variant="h1"
