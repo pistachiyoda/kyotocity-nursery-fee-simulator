@@ -13,6 +13,7 @@ export const InputDeduction: React.FC<
             variant="outlined"
             fullWidth
             type="number"
+            placeholder="0"
             onChange={(e) => setDeduction(Number(e.target.value) * 10000)}
             {...textFieldProps}
             InputProps={{

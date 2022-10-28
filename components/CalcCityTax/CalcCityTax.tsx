@@ -8,6 +8,13 @@ import {
     calcSpecialSpouseDeduction,
     calcSpouseDeduction,
 } from '../../lib/calcDeduction'
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableRow,
+} from '@mui/material'
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>
 
@@ -27,6 +34,7 @@ export const CalcCityTax: React.FC<{
     setMyIncome: SetState<number>
     spouseIncome: number
     setIncomeDeduction: SetState<number>
+    incomeDeduction: number
 }> = (props) => {
     const {
         relationship,
@@ -34,6 +42,7 @@ export const CalcCityTax: React.FC<{
         setMyIncome,
         spouseIncome,
         setIncomeDeduction,
+        incomeDeduction,
     } = props
 
     const [basicDeduction, setBasicDeduction] = useState(0)
@@ -79,6 +88,20 @@ export const CalcCityTax: React.FC<{
                 income={myIncome}
                 setIncome={setMyIncome}
             />
+            <TableContainer>
+                <Table>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell component="th" scope="row">
+                                給与所得（収入－給与所得控除額）
+                            </TableCell>
+                            <TableCell align="right">
+                                {myIncome / 10000}万円
+                            </TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </TableContainer>
             <SubSubTitle subsubtitle="所得控除を入力してください。"></SubSubTitle>
             <Stack spacing={2}>
                 <InputDeduction
@@ -86,7 +109,6 @@ export const CalcCityTax: React.FC<{
                     setDeduction={setBasicDeduction}
                     disabled={myIncome > 25000000}
                     value={basicDeduction / 10000 || ''}
-                    placeholder="0"
                     description={`【合計所得金額が2,500万円以下の納税義務者が対象】
                     2,400万円以下：43万円
                     2,400万円超2,450万円以下：29万円
@@ -100,7 +122,6 @@ export const CalcCityTax: React.FC<{
                     }
                     value={spouseDeduction / 10000 || ''}
                     setDeduction={setSpouseDeduction}
-                    placeholder="0"
                     description={`【本人の前年の合計所得金額が1,000万円以下、かつ生計を一にする配偶者の前年の年間の合計所得金額が48万円以下（令和元年分以前は38万円以下）であること。（給与のみの場合は給与収入が103万円以下）】
                     本人の合計所得金額900万円以下の場合：33万円
                     本人の合計所得金額900万円超950万円以下の場合：22万円
@@ -116,7 +137,6 @@ export const CalcCityTax: React.FC<{
                     }
                     setDeduction={setSpecialSpouseDeduction}
                     value={specialSpouseDeduction / 10000 || ''}
-                    placeholder="0"
                     description={`【本人の前年の合計所得金額が1，000万円以下、かつ生計を一にする配偶者の前年の合計所得金額が48万円超133万円以下（こちらは配偶者控除と違い給与のみみたいな制限はなし）※夫婦のどちらか一方のみでの適用】
                     本人の合計所得金額900万円以下の場合
                     配偶者の合計所得金額
@@ -166,6 +186,21 @@ export const CalcCityTax: React.FC<{
                     支払った金額の全額`}
                 />
             </Stack>
+
+            <TableContainer>
+                <Table>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell component="th" scope="row">
+                                課税対象額（給与所得ー所得控除）
+                            </TableCell>
+                            <TableCell align="right">
+                                {(myIncome - incomeDeduction) / 10000}万円
+                            </TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </>
     )
 }

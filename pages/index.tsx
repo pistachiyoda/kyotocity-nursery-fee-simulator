@@ -62,7 +62,7 @@ const Home: NextPage = () => {
                     <title>京都市保育料シミュレーター</title>
                     <meta
                         name="description"
-                        content="京都市保育料を計算するツールです。年収を入力することで京都市の認可保育園の保育料を簡易的に計算できます。 京都市にて保活中の皆様、ぜひご活用ください！"
+                        content="京都市保育料を計算するツールです。給与年収を入力することで京都市の認可保育園の保育料を簡易的に計算できます。 京都市にて保活中の皆様、ぜひご活用ください！"
                     />
                     <meta
                         name="google-site-verification"
@@ -84,7 +84,9 @@ const Home: NextPage = () => {
                         京都市の保育料シミュレーション
                     </Typography>
                     <p>
-                        京都市認可保育施設の保育料を簡易シミュレーションできます。
+                        京都市認可保育施設の保育料を、給与年収・代表的な控除を入力することで簡易シミュレーションできます。
+                        （サラリーマンの給料などが入力されることを前提としています。）
+                        <br />
                         計算するのは幼保無償化対象外の0~2歳の保育料です。
                         <br />
                         <br />
@@ -106,6 +108,7 @@ const Home: NextPage = () => {
                         setMyIncome={setFathersIncome}
                         spouseIncome={mothersIncome}
                         setIncomeDeduction={setFathersIncomeDeduction}
+                        incomeDeduction={fathersIncomeDeduction}
                     />
                     <SubTitle>Step2 母の情報の入力</SubTitle>
                     <CalcCityTax
@@ -114,6 +117,7 @@ const Home: NextPage = () => {
                         setMyIncome={setMothersIncome}
                         spouseIncome={fathersIncome}
                         setIncomeDeduction={setMothersIncomeDeduction}
+                        incomeDeduction={mothersIncomeDeduction}
                     />
                     <SubTitle>Step3 保育料シミュレーション結果</SubTitle>
                     <Button
