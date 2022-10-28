@@ -17,6 +17,7 @@ import Script from 'next/script'
 import Image from 'next/image'
 import { specifyLayer } from '../lib/specifyLayer'
 import { specifyNurseryFee } from '../lib/specifyNurseryFee'
+import { Reference } from '../components/Reference'
 
 const Home: NextPage = () => {
     const [fathersIncome, setFathersIncome] = useState(0)
@@ -238,7 +239,7 @@ const Home: NextPage = () => {
                 >
                     京都市の企業主導型保育施設をもっと調べる
                 </Button>
-                <Box maxWidth={200} margin="auto">
+                <Box maxWidth={200} margin="auto" mb={2}>
                     <Image
                         src="/mother_and_child.png"
                         width={536}
@@ -247,6 +248,7 @@ const Home: NextPage = () => {
                         layout="responsive"
                     ></Image>
                 </Box>
+                <Reference />
             </Container>
             <Box sx={{ backgroundColor: '#ede1f2', p: 3, textAlign: 'center' }}>
                 このサイトはこどもを実際に企業主導型保育園に通わせている有志の保護者によって運営されています。
