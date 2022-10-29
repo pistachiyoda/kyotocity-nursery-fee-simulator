@@ -12,11 +12,11 @@ export const calcIncomeBase = (originalncome: number) => {
     if (1628000 <= originalncome && originalncome < 1800000)
         return truncateLessThan1000(originalncome / 4) * 2.4 + 100000
     if (1800000 <= originalncome && originalncome < 3600000)
-        return truncateLessThan1000(originalncome / 4) * 2.8 + 80000
+        return truncateLessThan1000(originalncome / 4) * 2.8 - 80000
     if (3600000 <= originalncome && originalncome < 6600000)
-        return truncateLessThan1000(originalncome / 4) * 3.2 + 440000
+        return truncateLessThan1000(originalncome / 4) * 3.2 - 440000
     if (6600000 <= originalncome && originalncome < 8500000)
-        return originalncome * 0.9 + 1100000
+        return originalncome * 0.9 - 1100000
     if (8500000 <= originalncome) return originalncome - 1950000
     return 0
 }

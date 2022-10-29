@@ -85,7 +85,15 @@ export const CalcCityTax: React.FC<{
             ></SubSubTitle>
             <InputIncome
                 label={`${relationship}の年収`}
-                income={myIncome}
+                description={`【給与所得控除】
+                    収入金額：給与所得控除
+                    162.5万円以下：55万円
+                    162.5万円超　180万円以下：収入金額×40％－10万円
+                    180万円超　360万円以下：収入金額×30％＋ 8万円
+                    360万円超　660万円以下：収入金額×20％＋ 44万円
+                    660万円超　850万円以下：収入金額×10％＋110万円
+                    850万円超：195万円
+                `}
                 setIncome={setMyIncome}
             />
             <TableContainer>
@@ -102,7 +110,7 @@ export const CalcCityTax: React.FC<{
                     </TableBody>
                 </Table>
             </TableContainer>
-            <SubSubTitle subsubtitle="所得控除を入力してください。"></SubSubTitle>
+            <SubSubTitle subsubtitle="所得控除を入力してください。（基礎控除、配偶者（特別）控除は自動計算されます。）"></SubSubTitle>
             <Stack spacing={2}>
                 <InputDeduction
                     label="基礎控除"
