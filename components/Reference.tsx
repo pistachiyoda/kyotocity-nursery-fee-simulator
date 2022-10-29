@@ -9,6 +9,7 @@ const References = [
         '京都市の保育料',
         'https://www.city.kyoto.lg.jp/hagukumi/page/0000178518.html',
     ],
+    ['企業主導型保育事業ポータル', 'https://www.kigyounaihoiku.jp/'],
 ]
 
 export const Reference: React.FC = () => {

@@ -19,6 +19,7 @@ import { specifyLayer } from '../lib/specifyLayer'
 import { specifyNurseryFee } from '../lib/specifyNurseryFee'
 import { Reference } from '../components/Reference'
 import { PriceList } from '../components/PriceList'
+import { NoteLikeCard } from '../components/NoteLikeCard'
 
 const Home: NextPage = () => {
     const [fathersIncome, setFathersIncome] = useState(0)
@@ -146,9 +147,7 @@ const Home: NextPage = () => {
                     />
                 </Box>
                 <p>
-                    シュミレーション結果を見て意外と高いと思われた方、認可保育園に確実に入れるか不安な方、
-                    専業主婦（夫）だけどスキル取得のためまとまった時間が必要な方...
-                    <br />
+                    シュミレーション結果を見て意外と高いと思われた方...
                     <strong>企業主導型保育園</strong>
                     を検討してみてはいかがでしょうか？
                 </p>
@@ -183,6 +182,21 @@ const Home: NextPage = () => {
                         認可保育所並みの厳しい設置・運営基準が課せられている
                     </strong>
                     ため、一定の保育の質が確保されています。
+                </p>
+                <p>
+                    認可外にカテゴライズされるので、認可保育園と比べるとなんとなく不安に感じられる方は、ぜひこちらのnoteを読んでみてください。
+                </p>
+                <Stack spacing={2} mb={1}>
+                    <NoteLikeCard
+                        url="https://www.instagram.com/izuru_hoikuen.kyoto/?hl=ja"
+                        image="/static/images/cards/izuru.png"
+                        introduction="日本初の和風保育園。保育士の先生方の工夫を凝らした保育が魅力の園です。"
+                        price="35,000円"
+                    ></NoteLikeCard>
+                </Stack>
+                <p>
+                    そのほかにも認可保育園に確実に入れるか不安な方、
+                    専業主婦（夫）だけどスキル取得のためまとまった時間が必要な方...などにもメリットがあります。
                 </p>
                 <Typography
                     variant="h1"

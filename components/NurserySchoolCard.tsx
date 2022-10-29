@@ -14,7 +14,7 @@ export const NurserySchoolCard: React.FC<{
 }> = (props) => {
     const { url, image, schoolName, introduction, price } = props
     return (
-        <Card component="a" href={url} sx={{ textDecoration: 'none' }}>
+        <Card component="a" href={url} sx={{ borderRadius: '10px' }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
