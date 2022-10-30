@@ -188,9 +188,9 @@ const Home: NextPage = () => {
                 </p>
                 <Stack spacing={2} mb={1}>
                     <NoteLikeCard
-                        url="https://www.instagram.com/izuru_hoikuen.kyoto/?hl=ja"
+                        url="https://note.com/mmmiharu/n/n1a0b5c0f4502"
                         image="/static/images/cards/izuru.png"
-                        introduction="日本初の和風保育園。保育士の先生方の工夫を凝らした保育が魅力の園です。"
+                        introduction="京都・四条烏丸の「いづる保育園」を紹介したい | みはる | note"
                         price="35,000円"
                     ></NoteLikeCard>
                 </Stack>

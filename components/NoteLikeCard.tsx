@@ -11,7 +11,7 @@ export const NoteLikeCard: React.FC<{
     introduction: string
     price: string
 }> = (props) => {
-    const { url, image } = props
+    const { url, image, introduction } = props
     return (
         <Card component="a" href={url} sx={{ textDecoration: 'none' }}>
             <CardActionArea>
@@ -25,10 +25,7 @@ export const NoteLikeCard: React.FC<{
                     <Typography variant="body1" color="text.secondary">
                         note.com
                     </Typography>
-                    <Typography>
-                        京都・四条烏丸の「いづる保育園」を紹介したい | みはる |
-                        note
-                    </Typography>
+                    <Typography>{introduction}</Typography>
                 </CardContent>
             </CardActionArea>
         </Card>
