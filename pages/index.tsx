@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import Link from '@mui/material/Link'
-import { Box, Button, List, ListItem, ListItemText } from '@mui/material'
+import { Box, Button, Fab, List, ListItem, ListItemText } from '@mui/material'
 import { CalcCityTax } from '../components/CalcCityTax/CalcCityTax'
 import { CalcNurseryFee } from '../components/CalcNurseryFee'
 import { useState } from 'react'
@@ -20,6 +20,9 @@ import { specifyNurseryFee } from '../lib/specifyNurseryFee'
 import { Reference } from '../components/Reference'
 import { PriceList } from '../components/PriceList'
 import { NoteLikeCard } from '../components/NoteLikeCard'
+import zIndex from '@mui/material/styles/zIndex'
+import NavigationIcon from '@mui/icons-material/Navigation'
+import EditIcon from '@mui/icons-material/Edit'
 
 const Home: NextPage = () => {
     const [fathersIncome, setFathersIncome] = useState(0)
@@ -40,6 +43,11 @@ const Home: NextPage = () => {
         setNurseryFee_a(a)
         setNurseryFee_b(b)
         setNurseryFee_c(c)
+    }
+
+    const scrollToCalcResult = () => {
+        const calcResult = document.getElementById('calcResult')
+        calcResult?.scrollIntoView({ behavior: 'smooth' })
     }
 
     return (
@@ -122,24 +130,8 @@ const Home: NextPage = () => {
                         setIncomeDeduction={setMothersIncomeDeduction}
                         incomeDeduction={mothersIncomeDeduction}
                     />
+                    <div id="calcResult" />
                     <SubTitle>Step3 保育料シミュレーション結果</SubTitle>
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        size="large"
-                        fullWidth
-                        endIcon={<CalculateIcon />}
-                        onClick={() => {
-                            setNurseryFees()
-                            gtag('event', 'click_calc_button', {
-                                event_category: 'click_button',
-                                event_label: 'click_calc_button',
-                                value: 1,
-                            })
-                        }}
-                    >
-                        概算額を計算する
-                    </Button>
                     <CalcNurseryFee
                         a={nurseryFee_a}
                         b={nurseryFee_b}
@@ -236,7 +228,6 @@ const Home: NextPage = () => {
                         />
                     </ListItem>
                 </List>
-
                 <p>
                     企業主導型保育園に関する最新の情報は
                     <Link href="https://www.kigyounaihoiku.jp/users">
@@ -244,7 +235,6 @@ const Home: NextPage = () => {
                     </Link>
                     をご確認ください。
                 </p>
-
                 <Button
                     variant="contained"
                     fullWidth
@@ -270,6 +260,30 @@ const Home: NextPage = () => {
                     ></Image>
                 </Box>
                 <Reference />
+                <Fab
+                    variant="extended"
+                    color="secondary"
+                    sx={{
+                        fontSize: '20px',
+                        height: '50px',
+                        position: 'fixed',
+                        bottom: '20px',
+                        right: '10px',
+                        zIndex: '1',
+                    }}
+                    onClick={() => {
+                        setNurseryFees()
+                        scrollToCalcResult()
+                        gtag('event', 'click_calc_button', {
+                            event_category: 'click_button',
+                            event_label: 'click_calc_button',
+                            value: 1,
+                        })
+                    }}
+                >
+                    保育料を計算する&nbsp;
+                    <CalculateIcon />
+                </Fab>
             </Container>
             <Box sx={{ backgroundColor: '#ede1f2', p: 3, textAlign: 'center' }}>
                 このサイトはこどもを実際に企業主導型保育園に通わせている有志の保護者によって運営されています。
