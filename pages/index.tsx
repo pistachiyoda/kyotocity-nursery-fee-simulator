@@ -11,7 +11,7 @@ import { SubTitle } from '../components/SubTitle'
 import { calcCityTax } from '../lib/calcCityTax'
 import SearchIcon from '@mui/icons-material/Search'
 import CalculateIcon from '@mui/icons-material/Calculate'
-import { NurserySchoolCard } from '../components/NurserySchoolCard'
+// import { NurserySchoolCard } from '../components/NurserySchoolCard'
 import { Stack } from '@mui/system'
 import Script from 'next/script'
 import Image from 'next/image'
@@ -20,9 +20,6 @@ import { specifyNurseryFee } from '../lib/specifyNurseryFee'
 import { Reference } from '../components/Reference'
 import { PriceList } from '../components/PriceList'
 import { NoteLikeCard } from '../components/NoteLikeCard'
-import zIndex from '@mui/material/styles/zIndex'
-import NavigationIcon from '@mui/icons-material/Navigation'
-import EditIcon from '@mui/icons-material/Edit'
 
 const Home: NextPage = () => {
     const [fathersIncome, setFathersIncome] = useState(0)
@@ -32,14 +29,17 @@ const Home: NextPage = () => {
     const [nurseryFee_a, setNurseryFee_a] = useState(0)
     const [nurseryFee_b, setNurseryFee_b] = useState(0)
     const [nurseryFee_c, setNurseryFee_c] = useState(0)
+    const [layer, setLayer] = useState(0)
+    const [familyCityTax, setFamilyCityTax] = useState(0)
 
-    const familyCityTax =
-        calcCityTax(fathersIncome, fathersIncomeDeduction, 0) +
-        calcCityTax(mothersIncome, mothersIncomeDeduction, 0)
-
-    const setNurseryFees = () => {
-        const layer = specifyLayer(familyCityTax)
-        const [a, b, c] = specifyNurseryFee(layer)
+    const setSimulationResult = () => {
+        const newFamilyCityTax =
+            calcCityTax(fathersIncome, fathersIncomeDeduction, 0) +
+            calcCityTax(mothersIncome, mothersIncomeDeduction, 0)
+        setFamilyCityTax(newFamilyCityTax)
+        const newLayer = specifyLayer(newFamilyCityTax)
+        setLayer(newLayer)
+        const [a, b, c] = specifyNurseryFee(newLayer)
         setNurseryFee_a(a)
         setNurseryFee_b(b)
         setNurseryFee_c(c)
@@ -133,6 +133,8 @@ const Home: NextPage = () => {
                     <div id="calcResult" />
                     <SubTitle>Step3 保育料シミュレーション結果</SubTitle>
                     <CalcNurseryFee
+                        layer={layer}
+                        familyCityTax={familyCityTax}
                         a={nurseryFee_a}
                         b={nurseryFee_b}
                         c={nurseryFee_c}
@@ -270,9 +272,10 @@ const Home: NextPage = () => {
                         bottom: '20px',
                         right: '10px',
                         zIndex: '1',
+                        fontWeight: 'bold',
                     }}
                     onClick={() => {
-                        setNurseryFees()
+                        setSimulationResult()
                         scrollToCalcResult()
                         gtag('event', 'click_calc_button', {
                             event_category: 'click_button',
