@@ -95,23 +95,28 @@ const Home: NextPage = () => {
                         京都市の保育料シミュレーション
                     </Typography>
                     <p>
-                        京都市認可保育施設の保育料を、給与年収・代表的な控除を入力することで簡易シミュレーションできます。
-                        （サラリーマンの給料などが入力されることを前提としています。）
-                        <br />
-                        計算するのは幼保無償化対象外の0~2歳の保育料です。
-                        <br />
-                        <br />
-                        この計算結果はあくまで参考情報です。
-                        <br />
-                        実際の保育料徴収額は京都市より送付される保育料決定通知書等をご確認ください。
-                        <br />
-                        <br />
-                        なお，保育料の詳細については
-                        <Link href="https://www.city.kyoto.lg.jp/hagukumi/page/0000178518.html">
-                            「子ども・子育て支援制度における利用者負担額（保育料）について」
-                        </Link>
-                        をご覧ください。
+                        幼保無償化対象外の0~2歳の京都市認可保育施設の保育料を、給与年収（サラリーマンの給料など）・代表的な控除を入力することで簡易シミュレーションできます。
                     </p>
+                    <Typography
+                        variant="h3"
+                        sx={{
+                            fontSize: '20px',
+                            p: 0.5,
+                            fontWeight: 'bold',
+                            width: '80px',
+                            textAlign: 'center',
+                            mb: 0.5,
+                        }}
+                    >
+                        使い方
+                    </Typography>
+                    <List>
+                        <ListItem>Step1. 父の収入、所得控除を入力</ListItem>
+                        <ListItem>Step2. 母の収入、所得控除を入力</ListItem>
+                        <ListItem>
+                            Step3. 【保育料を計算する】ボタンをクリック
+                        </ListItem>
+                    </List>
                     <SubTitle>Step1 父の情報の入力</SubTitle>
                     <CalcCityTax
                         relationship="父"
@@ -139,6 +144,15 @@ const Home: NextPage = () => {
                         b={nurseryFee_b}
                         c={nurseryFee_c}
                     />
+                    <Typography
+                        variant="body2"
+                        sx={{
+                            fontSize: '12px',
+                            mt: 1,
+                        }}
+                    >
+                        ※この計算結果はあくまで参考情報のため、実際の保育料徴収額は京都市より送付される保育料決定通知書等をご確認ください。
+                    </Typography>
                 </Box>
                 <p>
                     シュミレーション結果を見て意外と高いと思われた方...
