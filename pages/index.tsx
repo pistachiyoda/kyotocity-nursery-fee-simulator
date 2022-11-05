@@ -20,6 +20,7 @@ import { specifyNurseryFee } from '../lib/specifyNurseryFee'
 import { Reference } from '../components/Reference'
 import { PriceList } from '../components/PriceList'
 import { NoteLikeCard } from '../components/NoteLikeCard'
+import { NurserySchoolsInfo } from '../components/NurserySchoolInfo/NurserySchoolsInfo'
 
 const Home: NextPage = () => {
     const [fathersIncome, setFathersIncome] = useState(0)
@@ -159,7 +160,8 @@ const Home: NextPage = () => {
                     <strong>企業主導型保育園</strong>
                     を検討してみてはいかがでしょうか？
                 </p>
-                <PriceList />
+                {/* <PriceList /> */}
+                <NurserySchoolsInfo />
                 {/* <Stack spacing={2}>
                     <NurserySchoolCard
                         url="https://www.instagram.com/izuru_hoikuen.kyoto/?hl=ja"

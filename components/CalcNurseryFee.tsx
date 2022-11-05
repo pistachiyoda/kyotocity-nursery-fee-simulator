@@ -12,7 +12,7 @@ import {
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: '#F9EEFE',
+        backgroundColor: theme.palette.action.hover,
         color: theme.palette.common.black,
     },
     [`&.${tableCellClasses.body}`]: {

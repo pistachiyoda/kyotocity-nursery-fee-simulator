@@ -8,22 +8,14 @@ import {
     TableRow,
     Typography,
 } from '@mui/material'
+import { BorderedTitle } from './BorderedTitle'
 
 export const PriceList: React.FC = () => {
     return (
         <>
-            <Typography
-                variant="h2"
-                sx={{
-                    border: 'solid #622A78',
-                    borderRadius: '10px',
-                    color: 'black',
-                    padding: '20px 15px 20px 20px',
-                    fontSize: '20px',
-                }}
-            >
+            <BorderedTitle>
                 企業主導型保育園（京都市中心部）の保育料 一例
-            </Typography>
+            </BorderedTitle>
             <TableContainer>
                 <Table>
                     <TableHead>
